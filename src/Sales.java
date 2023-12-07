@@ -9,7 +9,7 @@ public class Sales {
     //this.date = new Date();
    }
 
-   public double calcExpense (LinkedList itemBought){
+   public double calcExpense (LinkedList itemBought){  
        Object temp = itemBought.getFirst();
        JewelryItem data = (JewelryItem) temp;
        while(temp != null) {
@@ -27,6 +27,29 @@ public class Sales {
        }
        return expense;
    }
+   
+   public double calcRevenue(LinkedList itemBought){
+     double sum = 0.0;
+     Object temp = itemBought.getFirst();
+     JewelryItem data = (JewelryItem) temp;
+       while(temp != null) {
+        if(data.getItemCode() == 'R'){
+            // klaw ring kne casting balik jdi ring 
+            double itemExp = (data.getRate()*data.getTotalPrice()) ;
+            sum  += itemExp;
+        }
+        else if(data.getItemCode() == 'N'){
+            //klaw necklace casting balik jdi necklace
+            double itemExp = (data.getRate()*data.getTotalPrice()) ;
+           sum  += itemExp;
+        }
+         temp = itemBought.getNext();
+       }
+
+       revenue = sum - expense;
+    return revenue;
+   }
+
 
    
 
