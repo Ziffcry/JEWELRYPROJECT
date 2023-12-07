@@ -27,15 +27,10 @@ public class App {
        jewelList.insertAtBack(j3);
 
        JewelryItem dummy = new JewelryItem();
-       //dummy.updateJLL(metalList, jewelList);
-      // dummy.displayJewelList(jewelList);
+       dummy.updateJLL(metalList, jewelList);
+       dummy.displayJewelList(jewelList);
 
-       // dummy.updateJewelList(metalList, jewelList);
-       // dummy.displayJewelList(jewelList);
-
-       dummy.updateJewelList2(metalList, jewelList);
-      dummy.displayJewelList(jewelList);
-
+  
       System.out.println("test searching");
       dummy.searchItem("cincinEmas", jewelList);
     }

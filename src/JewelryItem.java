@@ -1,28 +1,38 @@
 public class JewelryItem {
     private String itemName;
+    private char itemCode;
     private String metalName;
     private double wageCost;
     private double totalPrice;
+    final  private double rate ;
+
 
 
     public JewelryItem(String itemName, String metalName , double wcost){
         this.itemName = itemName;
+        this.itemCode = 'u';
         this.metalName =  metalName;
         this.wageCost = wcost;
         this.totalPrice = 0.0;
+        this.rate = 0.05;
     }
 
     public JewelryItem(){
         this.itemName = "unassigned";
+        this.itemCode = 'u';
         this.metalName = "unassigned";
         this.wageCost = 0.0;
         this.totalPrice = 0.0;
+        this.rate = 0.05;
     }
     
-
     // Setter methods
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    public void setItemCode(char itemCode) {
+        this.itemCode = itemCode;
     }
 
     public void setMetalName(String metalName) {
@@ -42,6 +52,10 @@ public class JewelryItem {
         return itemName;
     }
 
+    public char getItemCode(){
+        return itemCode;
+    }
+
     public String getMetalName() {
         return metalName;
     }
@@ -52,6 +66,10 @@ public class JewelryItem {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public double getRate(){
+        return rate;
     }
 
     // Processor methods
@@ -66,41 +84,11 @@ public class JewelryItem {
             }
             temp = (Metal) metalList.getNext();   
         }
-        totalPrice = wageCost + data.getMetalPrice();
+        totalPrice = wageCost + data.getMetalPrice() + (getRate() * (wageCost + data.getMetalPrice()));
         return totalPrice ;
     }
    
-    // option 1
-    public void updateJewelList(LinkedList metalList, LinkedList jewelList){ 
-        LinkedList dummy = new LinkedList();
-        int loop =  dummy.countObject(jewelList);
-        Object temp =  jewelList.getFirst();
-        for (int i = 0; i < loop; i++){
-            JewelryItem data = (JewelryItem) temp;
-            data.calcTotalPrice(metalList);
-            jewelList.removeAtFront();
-            jewelList.insertAtBack(temp); 
-            temp = jewelList.getNext();
-        }
-    }
-   
-    // option 2
-    public LinkedList updateJewelList2(LinkedList metalList, LinkedList jewelList){ 
-        LinkedList dummy = new LinkedList();
-        int loop =  dummy.countObject(jewelList);
-        Object temp =  jewelList.getFirst();
-        for (int i = 0; i < loop; i++){
-            JewelryItem data = (JewelryItem) temp;
-            data.calcTotalPrice(metalList);
-            jewelList.removeAtFront();
-            jewelList.insertAtBack(temp); 
-            temp = jewelList.getNext();
-        }
-        return jewelList;
-    }
-
-    // option 3 (maybe this is most suitable)
-    public LinkedList updateJLL(LinkedList metalList, LinkedList jewelList){ 
+    public void updateJLL(LinkedList metalList, LinkedList jewelList){ 
         LinkedList tempList = new LinkedList();
   
         //  calculating 
@@ -115,7 +103,7 @@ public class JewelryItem {
            JewelryItem data = (JewelryItem) tempList.removeAtFront();  
            jewelList.insertAtBack(data);
         }
-        return jewelList;
+      
     }
 
     public void searchItem(String itemName , LinkedList jewelList){
