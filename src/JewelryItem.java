@@ -126,7 +126,7 @@ public class JewelryItem {
             System.out.println("Found: " + data.toString());
             break;
           }
-        //  temp = jewelList.getNext(); 
+         temp = jewelList.getNext(); 
        }
            
     }
