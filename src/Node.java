@@ -4,6 +4,6 @@ public class Node {
        
         public Node(Object elem){
           this.data = elem;
-          this.next = null;
+          this.next = null
         }
 }
