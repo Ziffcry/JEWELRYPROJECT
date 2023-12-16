@@ -1,21 +1,11 @@
 public class JewelryItem {
-    private String itemName;
-    private char itemCode;
-    private String metalName;
-    private double wageCost;
-    private double totalPrice;
+    protected String itemName;
+    protected char itemCode;
+    protected String metalName;
+    protected double wageCost; 
+    protected double totalPrice;
     final  private double rate ;
 
-
-
-    public JewelryItem(String itemName, String metalName , double wcost){
-        this.itemName = itemName;
-        this.itemCode = 'u';
-        this.metalName =  metalName;
-        this.wageCost = wcost;
-        this.totalPrice = 0.0;
-        this.rate = 0.05;
-    }
 
     public JewelryItem(){
         this.itemName = "unassigned";
@@ -25,28 +15,16 @@ public class JewelryItem {
         this.totalPrice = 0.0;
         this.rate = 0.05;
     }
-    
-    // Setter methods
-    public void setItemName(String itemName) {
+
+    public JewelryItem(String itemName, String metalName , double wcost){
         this.itemName = itemName;
+        this.itemCode = 'u';
+        this.metalName =  metalName;
+        this.wageCost = wcost;
+        this.totalPrice = 0.0;
+        this.rate = 0.05;
     }
-
-    public void setItemCode(char itemCode) {
-        this.itemCode = itemCode;
-    }
-
-    public void setMetalName(String metalName) {
-        this.metalName = metalName;
-    }
-
-    public void setWageCost(double wageCost) {
-        this.wageCost = wageCost;
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        this.totalPrice = totalPrice;
-    }
-
+      
     // Getter methods
     public String getItemName() {
         return itemName;
@@ -106,16 +84,18 @@ public class JewelryItem {
       
     }
 
-    public void searchItem(String itemName , LinkedList jewelList){
+    public boolean searchItem(String itemName , LinkedList jewelList){
        Object temp = jewelList.getFirst();
        while (temp!= null) {
           JewelryItem data = (JewelryItem) temp;
           if (data.getItemName().equalsIgnoreCase(itemName)) {
             System.out.println("Found: " + data.toString());
-            break;
+            return true;
           }
          temp = jewelList.getNext(); 
        }
+
+       return false;
            
     }
 
