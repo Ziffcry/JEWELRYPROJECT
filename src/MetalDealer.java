@@ -16,14 +16,13 @@ public class MetalDealer{
        return dealerName;
     }
    
-   
     // Processor methods
-    public LinkedList addMetal(Metal data , LinkedList metalList){
+    public LinkedList addMetal(Metal data , LinkedList metalList){     
         metalList.insertAtBack(data);
         return metalList;
     }
 
- 
+
     public LinkedList removeMetal(String name,LinkedList metalList){
        Metal data = (Metal) metalList.getFirst();
        while (data  != null) {

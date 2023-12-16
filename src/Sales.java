@@ -1,12 +1,10 @@
 public class Sales {
     private double expense;
     private double revenue;
-    //private Date date;
     
    public Sales (){
     this.expense = 0.0;
-    this.revenue = 0.0;
-    //this.date = new Date();
+    this.revenue = 0.0;  
    }
 
    public double calcExpense (LinkedList itemBought){  
@@ -54,7 +52,7 @@ public class Sales {
    
 
    public void SalesReport(){
-     // nati sepmu ejas la ui ni
+     
    }
 
 
